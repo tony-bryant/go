@@ -1123,6 +1123,18 @@ var work struct {
 // GC runs a garbage collection and blocks the caller until the
 // garbage collection is complete. It may also block the entire
 // program.
+// GC的4阶段
+// 1.sweep termination
+//	触发stw，所有p进入safe-pointer
+//	清理未清理的span
+// 2.mark phase
+// 3.mark termination
+//	触发stw
+//	执行清理
+// 4.sweep phase
+//	修改GC状态=_GCoff
+//	恢复程序执行
+//	后台并发清理所有的内存管理单元
 func GC() {
 	// We consider a cycle to be: sweep termination, mark, mark
 	// termination, and sweep. This function shouldn't return

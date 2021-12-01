@@ -18,7 +18,7 @@ type Type interface {
 
 // BasicKind describes the kind of basic type.
 type BasicKind int
-
+//go数据类型
 const (
 	Invalid BasicKind = iota // type is invalid
 
@@ -89,7 +89,7 @@ func (b *Basic) Info() BasicInfo { return b.info }
 
 // Name returns the name of basic type b.
 func (b *Basic) Name() string { return b.name }
-
+//数组源码
 // An Array represents an array type.
 type Array struct {
 	len  int64
@@ -97,7 +97,7 @@ type Array struct {
 }
 
 // NewArray returns a new array type for the given element type and length.
-// A negative length indicates an unknown length.
+// A negative length indicates an unknown length. 创建新数组
 func NewArray(elem Type, len int64) *Array { return &Array{len, elem} }
 
 // Len returns the length of array a.

@@ -100,7 +100,7 @@ func (s *StdSizes) Offsetsof(fields []*Var) []int64 {
 	}
 	return offsets
 }
-
+//基本数据类型长度
 var basicSizes = [...]byte{
 	Bool:       1,
 	Int8:       1,

@@ -1991,7 +1991,7 @@ type StringHeader struct {
 // Moreover, the Data field is not sufficient to guarantee the data
 // it references will not be garbage collected, so programs must keep
 // a separate, correctly typed pointer to the underlying data.
-type SliceHeader struct {
+type SliceHeader struct {//slice结构体
 	Data uintptr
 	Len  int
 	Cap  int

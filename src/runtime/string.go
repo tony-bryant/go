@@ -225,9 +225,10 @@ func slicerunetostring(buf *tmpBuf, a []rune) string {
 	return s[:size2]
 }
 
+// string结构体
 type stringStruct struct {
-	str unsafe.Pointer
-	len int
+	str unsafe.Pointer//起始位置
+	len int//长度
 }
 
 // Variant with *byte pointer type for DWARF debugging.
@@ -457,7 +458,7 @@ func findnullw(s *uint16) int {
 	return l
 }
 
-//go:nosplit
+//go:nosplit 根据字符串构建stringStruct，再转换成string
 func gostringnocopy(str *byte) string {
 	ss := stringStruct{str: unsafe.Pointer(str), len: findnull(str)}
 	s := *(*string)(unsafe.Pointer(&ss))
